@@ -1,0 +1,36 @@
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        //Xtend
+        classpath 'org.xtext:xtext-gradle-plugin:1.0.15'
+        classpath 'org.eclipse.xtext:org.eclipse.xtext.xbase.lib:2.11.0'
+    }
+}
+
+apply plugin: 'org.xtext.xtend'
+
+apply plugin: 'eclipse'
+eclipseJdt << { file('.settings/org.eclipse.core.resources.prefs').write('eclipse.preferences.version=1\nencoding/<project>=utf-8') }
+
+repositories {
+    jcenter()
+}
+
+version = "0.0.1"
+
+tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+
+dependencies {
+    compile group: 'org.eclipse.xtext', name: 'org.eclipse.xtext.xbase.lib', version: '2.11.0'
+	compile group: 'org.eclipse.xtend', name: 'org.eclipse.xtend.lib', version: '2.11.0'
+	 
+	testCompile 'junit:junit:4.12'
+}
+
