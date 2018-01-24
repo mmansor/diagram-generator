@@ -1,6 +1,7 @@
 package generator.gui
 
 import generator.rendering.ImageGeneratorScript
+import generator.rendering.scripts.ImageDrawingScript
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.Graphics
@@ -27,6 +28,7 @@ class GeneratorWindow {
 				}
 			}=> [
 				preferredSize = new Dimension(200,200)
+				background = Color.WHITE
 				
 			])
 			
@@ -47,9 +49,6 @@ class GeneratorWindow {
 	}
 	
 	def void setImage(BufferedImage image) {
-		panel.preferredSize = new Dimension(image.width, image.height)
-		panel.graphics.drawImage(image, 0, 0, panel)
-		
-		frame.pack
+		useScript(new ImageDrawingScript(image))
 	}
 }
